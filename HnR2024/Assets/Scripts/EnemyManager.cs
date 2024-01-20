@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [Header("Spawn Props")]
-    public float spawnInterval;
-
+    public float maxSpawnInterval;
+    public float minSpawnInterval;
 
     [Space]
     [Header("Object Refs")]
@@ -24,8 +24,11 @@ public class EnemyManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.fixedTime > nextSpawnTime) {
-            nextSpawnTime += spawnInterval;
+        if (Time.timeSinceLevelLoad > nextSpawnTime) {
+            nextSpawnTime += maxSpawnInterval - Mathf.Lerp(minSpawnInterval, 
+                                                           maxSpawnInterval, 
+                                                           Mathf.Clamp01(nextSpawnTime / 120));
+
             Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length)], spawnPoints[Random.Range(0, spawnPoints.Length)]);
         }
     }

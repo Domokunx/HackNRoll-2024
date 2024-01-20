@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public float maxSpeed = 2f;
     public int attack = 1;
 
-    public string[] words = new string[10] 
+    private string[] words = new string[10] 
         {
             "hello",
             "test",

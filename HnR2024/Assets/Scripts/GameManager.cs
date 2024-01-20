@@ -17,12 +17,12 @@ public class GameManager : MonoBehaviour
     private Enemy[] enemies;
     #endregion
 
-    // Start is called before the first frame update
-    private void Awake()
+    private void Start()
     {
         inputField.Select();
 
-        Object.DontDestroyOnLoad(this);
+        PlayerPrefs.SetInt("CurrentScore", 0);
+        score = 0;
     }
 
     private void Update()
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         if (FindEnemyWithInput())
         {
             scoreText.text = "Score: " + ++score;
+            PlayerPrefs.SetInt("CurrentScore", score);
         }
 
         // Delete Input
@@ -64,8 +65,6 @@ public class GameManager : MonoBehaviour
     }
     private bool MyEquals(char[] s1, char[] s2)
     {
-        Debug.Log(s2);
-        Debug.Log(s1);
         for (int i = 0; i < s2.Length; i++)
         {
             if (s1[i] != s2[i])
