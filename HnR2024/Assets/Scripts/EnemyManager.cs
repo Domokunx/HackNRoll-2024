@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject[] enemyTypes;
 
     private float nextSpawnTime = 0.5f;
+    private float nextBossSpawnTime = 15f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +28,16 @@ public class EnemyManager : MonoBehaviour
         if (Time.timeSinceLevelLoad > nextSpawnTime) {
             nextSpawnTime += maxSpawnInterval - Mathf.Lerp(minSpawnInterval, 
                                                            maxSpawnInterval, 
-                                                           Mathf.Clamp01(nextSpawnTime / 120));
+                                                           Mathf.Clamp01(nextSpawnTime / 180));
 
-            Instantiate(enemyTypes[Random.Range(0, enemyTypes.Length)], spawnPoints[Random.Range(0, spawnPoints.Length)]);
+            Instantiate(enemyTypes[0], spawnPoints[Random.Range(0, spawnPoints.Length)]);
+        }
+
+        if (Time.timeSinceLevelLoad > nextBossSpawnTime)
+        {
+            nextBossSpawnTime += 15;
+
+            Instantiate(enemyTypes[1], spawnPoints[Random.Range(0, spawnPoints.Length)]);
         }
     }
 }

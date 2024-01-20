@@ -7,23 +7,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Enemy Props")]
+    public int enemyHealth = 1;
     public float minSpeed = 0f;
     public float maxSpeed = 2f;
     public int attack = 1;
-
-    private string[] words = new string[10] 
-        {
-            "hello",
-            "test",
-            "System.out.println();",
-            "test2",
-            "testers",
-            "empty",
-            "word",
-            "yes",
-            "testing",
-            "HackNRoll"
-        };
+    public int score = 1;
+    public bool isBoss = false;
     [Space]
 
     [Header("Object Refs")]
@@ -34,20 +23,43 @@ public class Enemy : MonoBehaviour
 
     #region PriVars
     private float speed = 1f;
-    
+    private string[] words = new string[] 
+        {
+            "hello",
+            "test",
+            "empty",
+            "word",
+            "yes",
+            "testing",
+            "class",
+            "object"
+        };
+
+    private string[] bossWords = new string[]
+        {   
+            "System.out.println();",
+            "HackNRoll",
+            "QuAcK"
+        };
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         speed = Random.Range(minSpeed, maxSpeed);
-        word = words[Random.Range(0, words.Length)];
+        word = isBoss ? bossWords[Random.Range(0, bossWords.Length)] : words[Random.Range(0, words.Length)];
         textBox.text = word;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (enemyHealth <= 0)
+        {
+            PlayerPrefs.SetInt("CurrentScore", PlayerPrefs.GetInt("CurrentScore") + score);
+            GameManager.instance.UpdateScore();
+            Destroy(gameObject);
+        }
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 
@@ -61,5 +73,13 @@ public class Enemy : MonoBehaviour
             Player.instance.TakeDamage(attack);
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamage()
+    {
+        enemyHealth--;
+        word = isBoss ? bossWords[Random.Range(0, bossWords.Length)] : words[Random.Range(0, words.Length)];
+        textBox.text = word;
+        textBox.color = Color.yellow;
     }
 }

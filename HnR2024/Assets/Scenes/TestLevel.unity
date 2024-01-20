@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpawnInterval: 4
-  minSpawnInterval: 0.3
+  minSpawnInterval: 0.75
   spawnPoints:
   - {fileID: 322834991}
   - {fileID: 1237400816}

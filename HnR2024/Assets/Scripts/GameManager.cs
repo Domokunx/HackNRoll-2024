@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
 
     [Header("ObjectRefs")]
     public TextMeshProUGUI scoreText;
@@ -19,10 +20,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
+
         inputField.Select();
 
         PlayerPrefs.SetInt("CurrentScore", 0);
-        score = 0;
     }
 
     private void Update()
@@ -40,28 +42,29 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if (FindEnemyWithInput())
-        {
-            scoreText.text = "Score: " + ++score;
-            PlayerPrefs.SetInt("CurrentScore", score);
-        }
+        FindEnemyWithInput();
 
         // Delete Input
         inputField.text = string.Empty;
         inputField.ActivateInputField();
     }
-    private bool FindEnemyWithInput()
+    public void UpdateScore()
     {
+        scoreText.text = "Score: " + PlayerPrefs.GetInt("CurrentScore");
+    }
+    private void FindEnemyWithInput()
+    {
+        Enemy closestE = null;
         foreach (Enemy e in enemies)
         {
             if (MyEquals(inputField.text.ToCharArray(), e.word.ToCharArray()))
             {
-                Debug.Log("enemy killed");  
-                Destroy(e.gameObject);
-                return true;
+                closestE = e;
             }
         }
-        return false;
+
+        if (closestE == null) return;
+        closestE.TakeDamage();
     }
     private bool MyEquals(char[] s1, char[] s2)
     {

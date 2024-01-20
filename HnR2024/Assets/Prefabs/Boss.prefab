@@ -100,18 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11c89163b55c1e44a4a2442f12c38e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealth: 2
   minSpeed: 0.5
   maxSpeed: 1
-  attack: 3
-  words:
-  - hello
-  - test
-  - System.out.println();
-  - test2
-  - testers
-  - empty
-  - word
-  - yes
+  attack: 2
+  score: 2
+  isBoss: 1
   target: {fileID: 8470631549329116220, guid: d4464afcae09c4c4ebf75352ee23d1ec, type: 3}
   textBox: {fileID: 5396034792957493775}
   word: 
