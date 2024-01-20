@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Transform playerTransform;
     public Slider expBar;
     public GameObject skillSelectScreen;
+    public GameObject audioObject;
 
     #region Private Variables
     private Enemy[] enemies;
@@ -23,12 +24,13 @@ public class GameManager : MonoBehaviour
     private int EXPincrease = 2;
     private int maxEXP = 5;
     private int level = 1;
+
     #endregion
 
     private void Start()
     {
         instance = this;
-
+        
         inputField.Select();
 
         expBar.value = 0;
@@ -40,6 +42,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            Instantiate(audioObject);
+        }
+
         enemies = FindObjectsOfType<Enemy>();
         
         if (expBar.value == maxEXP)

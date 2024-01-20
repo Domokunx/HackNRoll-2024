@@ -408,6 +408,7 @@ MonoBehaviour:
   playerTransform: {fileID: 595983584}
   expBar: {fileID: 884282746}
   skillSelectScreen: {fileID: 988901988}
+  audioObject: {fileID: 5879170021522120066, guid: 7cbb574e9d0b26d4b846b96917ca6864, type: 3}
 --- !u!4 &329949353
 Transform:
   m_ObjectHideFlags: 0
