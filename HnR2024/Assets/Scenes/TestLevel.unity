@@ -320,7 +320,7 @@ MonoBehaviour:
   powerUps:
   - {fileID: 1105686016269968608, guid: db3a6be94df643249be19020360a1896, type: 3}
   - {fileID: 1105686016269968608, guid: db3a6be94df643249be19020360a1896, type: 3}
-  - {fileID: 1105686016269968608, guid: db3a6be94df643249be19020360a1896, type: 3}
+  - {fileID: 1105686016269968608, guid: 48615ad1a91408841950727760390818, type: 3}
   skillPanels:
   - {fileID: 1330269661}
   - {fileID: 1808034691}
@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfeeb395ee42765468fbe967d6a889fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBeforeHiding: 5
   scoreText: {fileID: 1628672311}
   inputField: {fileID: 1561220255}
   playerTransform: {fileID: 595983584}
@@ -684,6 +685,7 @@ MonoBehaviour:
   - {fileID: 1617155753733800127, guid: 9eba429d848a8cc4b9151ccba3b8bef2, type: 3}
   - {fileID: 1617155753733800127, guid: 1605c5c5ed212134583b18d567ac6ad6, type: 3}
   - {fileID: 1617155753733800127, guid: 4ebc6403be42a8343aa599f634160dc0, type: 3}
+  - {fileID: 1617155753733800127, guid: 3fdede56d848677459a35b50ca70b68f, type: 3}
 --- !u!1 &884282744
 GameObject:
   m_ObjectHideFlags: 0

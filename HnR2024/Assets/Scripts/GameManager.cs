@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    
+    [HideInInspector] public float timeBeforeHiding = 5f;
 
     [Header("ObjectRefs")]
     public TextMeshProUGUI scoreText;
@@ -20,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     private int EXPincrease = 2;
     private int maxEXP = 5;
+    private int level = 1;
     #endregion
 
     private void Start()
@@ -99,6 +102,11 @@ public class GameManager : MonoBehaviour
 
     private void LevelUp()
     {
+        if (level > 4)
+        {
+            timeBeforeHiding -= 0.15f;
+        }
+
         expBar.value -= maxEXP;
         maxEXP += ++EXPincrease;
         expBar.maxValue = maxEXP;
@@ -107,5 +115,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         inputField.enabled = false;
         SkillSelectManager.Instance.RefreshSelections();
+        level++;
     }
 }

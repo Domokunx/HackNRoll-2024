@@ -19,8 +19,10 @@ public class Enemy : MonoBehaviour
     public TextMeshPro textBox;
 
     [HideInInspector] public string word;
+    [HideInInspector] TMP_InputField inputField;
 
     #region PriVars
+
     private float speed = 1f;
     private string[] words1 = new string[] 
     {
@@ -49,11 +51,20 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(HideWord());
+
+        inputField = GameManager.instance.inputField;
+
         speed = Random.Range(minSpeed, maxSpeed);
-        word = enemyType == 1 ? words1[Random.Range(0, words1.Length)]
+        word = enemyType == 1 || enemyType == 4 ? words1[Random.Range(0, words1.Length)]
                : enemyType == 2 ? words2[Random.Range(0, words2.Length)]
                : words3[Random.Range(0, words3.Length)];
         textBox.text = word;
+
+        if (enemyType == 4)
+        {
+            inputField.contentType = TMP_InputField.ContentType.Password;
+        }
     }
 
     // Update is called once per frame
@@ -63,6 +74,12 @@ public class Enemy : MonoBehaviour
         {
             PlayerPrefs.SetInt("CurrentScore", PlayerPrefs.GetInt("CurrentScore") + score);
             GameManager.instance.UpdateScore();
+
+            if (enemyType == 4)
+            {
+                inputField.contentType = TMP_InputField.ContentType.Standard;
+            }
+
             Destroy(gameObject);
         }
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
@@ -88,5 +105,12 @@ public class Enemy : MonoBehaviour
                : words3[Random.Range(0, words3.Length)];
         textBox.text = word;
         textBox.color = Color.yellow;
+        StartCoroutine(HideWord());
+    }
+
+    IEnumerator HideWord()
+    {
+        yield return new WaitForSeconds(GameManager.instance.timeBeforeHiding);
+        textBox.text = string.Empty;
     }
 }

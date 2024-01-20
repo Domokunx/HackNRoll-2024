@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
     private float nextSpawnTime = 0.5f;
     private float nextBossSpawnTime = 15f;
     private float nextBigBossSpawnTime = 30f;
+    private float nextObfuscatorBossSpawnTime = 40f;
 
     // Update is called once per frame
     void Update()
@@ -23,7 +24,7 @@ public class EnemyManager : MonoBehaviour
         if (Time.timeSinceLevelLoad > nextSpawnTime) {
             nextSpawnTime += maxSpawnInterval - Mathf.Lerp(minSpawnInterval, 
                                                            maxSpawnInterval, 
-                                                           Mathf.Clamp01(nextSpawnTime / 180));
+                                                           Mathf.Clamp01(nextSpawnTime / 140));
 
             Instantiate(enemyTypes[0], spawnPoints[Random.Range(0, spawnPoints.Length)]);
         }
@@ -40,6 +41,13 @@ public class EnemyManager : MonoBehaviour
             nextBigBossSpawnTime += 30;
 
             Instantiate(enemyTypes[2], spawnPoints[Random.Range(0, spawnPoints.Length)]);
+        }
+
+        if (Time.timeSinceLevelLoad > nextObfuscatorBossSpawnTime)
+        {
+            nextObfuscatorBossSpawnTime += 40;
+
+            Instantiate(enemyTypes[3], spawnPoints[Random.Range(0, spawnPoints.Length)]);
         }
     }
 }

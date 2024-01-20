@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class YesPowerUp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void UseSkill()
     {
-        
-    }
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.textBox.text = "yes";
+            enemy.word = "yes";
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SkillSelectManager.Instance.OnSelectSkill();
     }
 }
