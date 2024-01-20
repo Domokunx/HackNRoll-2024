@@ -18,28 +18,46 @@ public class Enemy : MonoBehaviour
     public Transform target;
     public TextMeshPro textBox;
 
+    [HideInInspector] public float speed = 1f;
     [HideInInspector] public string word;
     [HideInInspector] TMP_InputField inputField;
 
     #region PriVars
 
-    private float speed = 1f;
     private string[] words1 = new string[] 
     {
-        "hello",
+        "printf",
+        "scanf",
+        "array",
         "test",
-        "empty",
-        "word",
-        "yes",
+        "int",
         "class",
-        "object"
+        "object",
+        "var",
+        "string",
+        "boolean",
+        "bit",
+        "function",
+        "list",
+        "tree",
+        "binary",
+        "sort",
+        "search",
+        "return"
     };
 
     private string[] words2 = new string[]
     {   
         "HackNRoll",
         "QuAcK",
-        "Debuggle"
+        "Debuggle",
+        "Binary Search",
+        "algorithm",
+        "abstraction",
+        "encapsulation",
+        "inheritance",
+        "polymorphism",
+        "constructors"
     };
 
     private string[] words3 = new string[]
