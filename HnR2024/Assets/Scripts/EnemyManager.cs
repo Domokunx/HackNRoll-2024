@@ -15,12 +15,7 @@ public class EnemyManager : MonoBehaviour
 
     private float nextSpawnTime = 0.5f;
     private float nextBossSpawnTime = 15f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float nextBigBossSpawnTime = 30f;
 
     // Update is called once per frame
     void Update()
@@ -38,6 +33,13 @@ public class EnemyManager : MonoBehaviour
             nextBossSpawnTime += 15;
 
             Instantiate(enemyTypes[1], spawnPoints[Random.Range(0, spawnPoints.Length)]);
+        }
+
+        if (Time.timeSinceLevelLoad > nextBigBossSpawnTime)
+        {
+            nextBigBossSpawnTime += 30;
+
+            Instantiate(enemyTypes[2], spawnPoints[Random.Range(0, spawnPoints.Length)]);
         }
     }
 }

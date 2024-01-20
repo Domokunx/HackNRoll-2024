@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public float maxSpeed = 2f;
     public int attack = 1;
     public int score = 1;
-    public bool isBoss = false;
+    public int enemyType;
     [Space]
 
     [Header("Object Refs")]
@@ -23,31 +23,37 @@ public class Enemy : MonoBehaviour
 
     #region PriVars
     private float speed = 1f;
-    private string[] words = new string[] 
-        {
-            "hello",
-            "test",
-            "empty",
-            "word",
-            "yes",
-            "testing",
-            "class",
-            "object"
-        };
+    private string[] words1 = new string[] 
+    {
+        "hello",
+        "test",
+        "empty",
+        "word",
+        "yes",
+        "class",
+        "object"
+    };
 
-    private string[] bossWords = new string[]
-        {   
-            "System.out.println();",
-            "HackNRoll",
-            "QuAcK"
-        };
+    private string[] words2 = new string[]
+    {   
+        "HackNRoll",
+        "QuAcK",
+        "Debuggle"
+    };
+
+    private string[] words3 = new string[]
+    {
+        "System.out.println();"
+    };
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         speed = Random.Range(minSpeed, maxSpeed);
-        word = isBoss ? bossWords[Random.Range(0, bossWords.Length)] : words[Random.Range(0, words.Length)];
+        word = enemyType == 1 ? words1[Random.Range(0, words1.Length)]
+               : enemyType == 2 ? words2[Random.Range(0, words2.Length)]
+               : words3[Random.Range(0, words3.Length)];
         textBox.text = word;
     }
 
@@ -78,7 +84,9 @@ public class Enemy : MonoBehaviour
     public void TakeDamage()
     {
         enemyHealth--;
-        word = isBoss ? bossWords[Random.Range(0, bossWords.Length)] : words[Random.Range(0, words.Length)];
+        word = enemyType == 1 ? words1[Random.Range(0, words1.Length)]
+               : enemyType == 2 ? words2[Random.Range(0, words2.Length)]
+               : words3[Random.Range(0, words3.Length)];
         textBox.text = word;
         textBox.color = Color.yellow;
     }
