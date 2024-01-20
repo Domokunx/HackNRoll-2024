@@ -39,4 +39,9 @@ public class Player : MonoBehaviour
     {
         health -= damage;
     }
+
+    public void Heal(int heal)
+    {
+        health += heal;
+    }
 }

@@ -106,6 +106,8 @@ public class GameManager : MonoBehaviour
         expBar.maxValue = maxEXP;
         
         skillSelectScreen.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+        inputField.enabled = false;
+        SkillSelectManager.Instance.RefreshSelections();
     }
 }
