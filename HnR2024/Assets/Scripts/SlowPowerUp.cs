@@ -10,6 +10,7 @@ public class SlowPowerUp : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.speed /= 3;
+            enemy.GetComponent<SpriteRenderer>().color = Color.blue;
         }
 
         SkillSelectManager.Instance.OnSelectSkill();

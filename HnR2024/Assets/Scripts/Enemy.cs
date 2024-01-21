@@ -43,7 +43,10 @@ public class Enemy : MonoBehaviour
         "binary",
         "sort",
         "search",
-        "return"
+        "return",
+        "loops",
+        "errors",
+        "run"
     };
 
     private string[] words2 = new string[]
@@ -51,7 +54,6 @@ public class Enemy : MonoBehaviour
         "HackNRoll",
         "QuAcK",
         "Debuggle",
-        "Binary Search",
         "algorithm",
         "abstraction",
         "encapsulation",
@@ -62,6 +64,7 @@ public class Enemy : MonoBehaviour
 
     private string[] words3 = new string[]
     {
+        "Binary Search",
         "System.out.println();"
     };
     #endregion
