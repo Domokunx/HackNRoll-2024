@@ -46,7 +46,8 @@ public class Enemy : MonoBehaviour
         "return",
         "loops",
         "errors",
-        "run"
+        "run",
+        "void"
     };
 
     private string[] words2 = new string[]
@@ -120,6 +121,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage()
     {
+        StopCoroutine(HideWord());
         enemyHealth--;
         word = enemyType == 1 ? words1[Random.Range(0, words1.Length)]
                : enemyType == 2 ? words2[Random.Range(0, words2.Length)]
