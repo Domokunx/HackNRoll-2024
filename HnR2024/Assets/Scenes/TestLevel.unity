@@ -323,6 +323,7 @@ MonoBehaviour:
   - {fileID: 1105686016269968608, guid: 49cf6f7524dd5dc4ca8a2741fef6a0d9, type: 3}
   - {fileID: 1105686016269968608, guid: 8e3d3a7dab66d384b9acc2c6ff1da8ec, type: 3}
   - {fileID: 1105686016269968608, guid: 35a12bed944a97042a907a475d930fc4, type: 3}
+  - {fileID: 1105686016269968608, guid: 47c3a5124f792fa47980be2e0050d51f, type: 3}
   skillPanels:
   - {fileID: 1330269661}
   - {fileID: 1808034691}
@@ -3117,7 +3118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8470631549329116220, guid: d4464afcae09c4c4ebf75352ee23d1ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8470631549329116220, guid: d4464afcae09c4c4ebf75352ee23d1ec, type: 3}
       propertyPath: m_LocalPosition.y
